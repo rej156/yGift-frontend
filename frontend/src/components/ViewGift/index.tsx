@@ -209,7 +209,7 @@ const ViewGift: React.FunctionComponent<IProps> = (props) => {
                     color: "#013A6D;",
                   }}
                 >
-                  {ethers.utils.formatEther(gift?.tipped)}
+                  {ethers.utils.formatEther(gift?.tipped.sub(gift?.amount))}
                 </Text>
               </VStack>
               <VStack alignItems="flex-start" spacing={2} textAlign="left">
