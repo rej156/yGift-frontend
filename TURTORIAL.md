@@ -349,7 +349,7 @@ export const MyToken: React.FC<Props> = () => {
         await myToken.deployed()
 
         const currentBalance = await myToken.balanceOf(myAddress)
-        console.log("My current balance is ", ethers.utils.formatUnits(currentBalance))
+        console.log("My current balance is ", ethers.utils.formatEther(currentBalance))
     }
     return (
         <div>

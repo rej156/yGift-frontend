@@ -143,7 +143,7 @@ const Transaction: React.FC<TransactionModel> = (props) => (
               lineHeight: "137.88%",
             }}
           >
-            {ethers.utils.formatUnits(props.amount)}
+            {ethers.utils.formatEther(props.amount)}
           </Text>
         </VStack>
       )}
