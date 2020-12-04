@@ -54,7 +54,7 @@ const Tip: React.FunctionComponent<IProps> = ({ tokenId, isOpen, tokenContractAd
         if (events?.length > 0) {
           const balance = await erc20Contract.balanceOf(currentAddress);
           console.log(balance?.toString());
-          console.log(ethers.utils.formatEther(balance));
+          console.log(ethers.utils.formatUnits(balance));
           setMaxAmount(balance);
         }
       }
@@ -94,7 +94,7 @@ const Tip: React.FunctionComponent<IProps> = ({ tokenId, isOpen, tokenContractAd
             <FormControl key={param} isInvalid={Boolean(formik.errors[index] && formik.touched[index])}>
               {maxAmount && param === "_amount" ? (
                 <FormLabel textAlign="center" htmlFor="_amount">
-                  {`Max: ${Math.floor(Number(ethers.utils.formatEther(maxAmount)) * 100) / 100}`}
+                  {`Max: ${ethers.utils.formatUnits(maxAmount)}`}
                 </FormLabel>
               ) : null}
               <FormLabel htmlFor={param}>{param === "_amount" ? "Amount" : "Message"}</FormLabel>
@@ -106,7 +106,7 @@ const Tip: React.FunctionComponent<IProps> = ({ tokenId, isOpen, tokenContractAd
                 onChange={formik.handleChange}
                 type={param === "_amount" ? "number" : "text"}
                 value={formik.values[index]?.toString()}
-                max={param === "_amount" ? ethers.utils.formatEther(maxAmount) : undefined}
+                max={param === "_amount" ? ethers.utils.formatUnits(maxAmount) : undefined}
                 min={param === "_amount" ? "0" : undefined}
                 step={param === "_amount" ? "0.0001" : undefined}
               />

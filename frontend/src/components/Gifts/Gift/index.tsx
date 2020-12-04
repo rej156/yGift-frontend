@@ -57,7 +57,7 @@ const Gift: React.FunctionComponent<GiftModel> = (props) => (
               Amount left
             </Text>
             <Text fontFamily="Roboto" fontSize="16px" fontWeight="bold" color={giftAmountColour}>
-              {`${ethers.utils.formatEther(props?.amount.toString())}`}
+              {`${ethers.utils.formatUnits(props?.amount.toString())}`}
             </Text>
           </>
         )}

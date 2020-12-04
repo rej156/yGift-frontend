@@ -262,7 +262,7 @@ const CreateGift: React.FunctionComponent<IProps> = (props) => {
         if (events?.length > 0) {
           const balance = await erc20Contract.balanceOf(currentAddress);
           console.log(balance?.toString());
-          console.log(ethers.utils.formatEther(balance));
+          console.log(ethers.utils.formatUnits(balance));
           setMaxAmount(balance);
         } else {
           setMaxAmount(0);
@@ -282,7 +282,7 @@ const CreateGift: React.FunctionComponent<IProps> = (props) => {
         setIsApproved(true);
         const balance = await erc20Contract.balanceOf(currentAddress);
         console.log(balance?.toString());
-        console.log(ethers.utils.formatEther(balance));
+        console.log(ethers.utils.formatUnits(balance));
         setMaxAmount(balance);
       }
     };
@@ -596,7 +596,7 @@ const CreateGift: React.FunctionComponent<IProps> = (props) => {
                 >
                   {maxAmount && param === "_amount" ? (
                     <FormLabel textAlign="center" htmlFor="_amount">
-                      {`Max: ${Math.floor(Number(ethers.utils.formatEther(maxAmount)) * 100) / 100}`}
+                      {`Max: ${ethers.utils.formatUnits(maxAmount)}`}
                     </FormLabel>
                   ) : null}
                   <Input
@@ -608,7 +608,7 @@ const CreateGift: React.FunctionComponent<IProps> = (props) => {
                     name={index.toString()}
                     onChange={formik.handleChange}
                     type={param === "_duration" || param === "_amount" ? "number" : "text"}
-                    max={param === "_amount" ? ethers.utils.formatEther(maxAmount) : undefined}
+                    max={param === "_amount" ? ethers.utils.formatUnits(maxAmount) : undefined}
                     min={param === "_amount" ? "0" : undefined}
                     step={param === "_amount" ? "any" : undefined}
                     value={formik.values[index]?.toString()}

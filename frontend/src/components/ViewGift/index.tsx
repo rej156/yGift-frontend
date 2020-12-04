@@ -241,7 +241,7 @@ const ViewGift: React.FunctionComponent<IProps> = (props) => {
                   }}
                 >
                   {" "}
-                  {`${ethers.utils.formatEther(gift?.amount)}`}
+                  {`${ethers.utils.formatUnits(gift?.amount)}`}
                 </Text>
               </VStack>
               <VStack alignItems="flex-start" spacing={2} textAlign="left">
@@ -271,7 +271,7 @@ const ViewGift: React.FunctionComponent<IProps> = (props) => {
                     color: "#013A6D;",
                   }}
                 >
-                  {ethers.utils.formatEther(gift?.tipped)}
+                  {ethers.utils.formatUnits(gift?.tipped)}
                 </Text>
               </VStack>
               <VStack alignItems="flex-start" spacing={2} textAlign="left">

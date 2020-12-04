@@ -39,7 +39,7 @@ const Collect: React.FunctionComponent<IProps> = (props) => {
         {collectible && (
           <HStack spacing={1}>
             <Text>Available to collect:</Text>
-            <Text>{ethers.utils.formatEther(collectible)}</Text>
+            <Text>{ethers.utils.formatUnits(collectible)}</Text>
           </HStack>
         )}
         {params.map((param, index) => {
@@ -56,8 +56,8 @@ const Collect: React.FunctionComponent<IProps> = (props) => {
                 name={index.toString()}
                 onChange={formik.handleChange}
                 max={
-                  collectible && param === "_amount" && Number(ethers.utils.formatEther(collectible)) > 0
-                    ? Number(ethers.utils.formatEther(collectible))
+                  collectible && param === "_amount" && Number(ethers.utils.formatUnits(collectible)) > 0
+                    ? Number(ethers.utils.formatUnits(collectible))
                     : undefined
                 }
                 type="number"
